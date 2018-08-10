@@ -4,14 +4,20 @@ push $cut_paste_input
 Group {
 name LinToRound
 selected true
-xpos -1623
-ypos 3108
+xpos -1486
+ypos 2814
 }
 Input {
 inputs 0
 name Input1
 xpos -656
-ypos 498
+ypos 435
+}
+Invert {
+name Invert1
+selected true
+xpos -656
+ypos 500
 }
 Gamma {
 value 0.5

@@ -1,0 +1,41 @@
+set cut_paste_input [stack 0]
+version 10.5 v3
+push $cut_paste_input
+Group {
+name LinToRound
+selected true
+xpos -1623
+ypos 3108
+}
+Input {
+inputs 0
+name Input1
+xpos -656
+ypos 498
+}
+Gamma {
+value 0.5
+name Gamma2
+xpos -656
+ypos 538
+}
+Grade {
+multiply -1
+add 1
+black_clamp false
+name Grade45
+xpos -656
+ypos 576
+}
+Gamma {
+value 2
+name Gamma3
+xpos -656
+ypos 602
+}
+Output {
+name Output1
+xpos -656
+ypos 702
+}
+end_group

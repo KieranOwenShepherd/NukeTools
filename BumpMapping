@@ -1,48 +1,48 @@
 set cut_paste_input [stack 0]
 version 10.5 v3
 Phong {
- inputs 0
- diffuse 0.09
- specular 0.62
- name Phong1
- selected true
- xpos -2123
- ypos 3736
+inputs 0
+diffuse 0.09
+specular 0.62
+name Phong2
+selected true
+xpos 6676
+ypos 4035
 }
 Camera2 {
- inputs 0
- translate {0 0 1}
- name Camera1
- selected true
- xpos -2219
- ypos 2908
+inputs 0
+translate {0 0 1}
+name Camera4
+selected true
+xpos 6580
+ypos 3207
 }
 Dot {
- name Dot24
- selected true
- xpos -2195
- ypos 3010
+name Dot51
+selected true
+xpos 6604
+ypos 3309
 }
-set N57fd8400 [stack 0]
+set N61f96c00 [stack 0]
 Dot {
- name Dot28
- selected true
- xpos -2195
- ypos 3549
+name Dot52
+selected true
+xpos 6604
+ypos 3848
 }
 Light {
- inputs 0
- translate {1.595999956 -0.4149999619 -0.9950000048}
- depthmap_slope_bias 0.01
- name Point2
- selected true
- xpos -1786
- ypos 3659
+inputs 0
+translate {1.595999956 -0.4149999619 -0.9950000048}
+depthmap_slope_bias 0.01
+name Point3
+selected true
+xpos 7013
+ypos 3958
 }
-push $N57fd8400
+push $N61f96c00
 RotoPaint {
- inputs 0
- curves {{{v x3f99999a}
+inputs 0
+curves {{{v x3f99999a}
   {f 0}
   {n
    {layer Root
@@ -302,7 +302,7 @@ RotoPaint {
        {x445c8000 x4435c000 x3ecb32cd}}}
      {tx x44832000 x44613cb1 x447527b9}
      {a ro 0 go 0 bo 0 ao 0 h x3e000000 bu 1 str 1 spx x44a12000 spy x44870000 sb 1 ltn x44832000 ltm x44832000 tt x41880000}}}}}}
- toolbox {brush {
+toolbox {brush {
   { selectAll str 1 ssx 1 ssy 1 sf 1 }
   { createBezier str 1 ssx 1 ssy 1 sf 1 sb 1 }
   { createBezierCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
@@ -320,119 +320,119 @@ RotoPaint {
   { sharpen src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
   { smear src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
 } }
- toolbar_brush_hardness 0.200000003
- toolbar_lifetime_type single
- toolbar_lifetime_start 1049
- toolbar_lifetime_end 1049
- toolbar_source_transform_scale {1 1}
- toolbar_source_transform_center {1289 1080}
- colorOverlay {0 0 0 0}
- lifetime_type "all frames"
- lifetime_start 1049
- lifetime_end 1049
- brush_spacing 0.05000000075
- brush_hardness 0.125
- source_black_outside true
- name RotoPaint1
- selected true
- xpos -1486
- ypos 2788
+toolbar_brush_hardness 0.200000003
+toolbar_lifetime_type single
+toolbar_lifetime_start 1049
+toolbar_lifetime_end 1049
+toolbar_source_transform_scale {1 1}
+toolbar_source_transform_center {1289 1080}
+colorOverlay {0 0 0 0}
+lifetime_type "all frames"
+lifetime_start 1049
+lifetime_end 1049
+brush_spacing 0.05000000075
+brush_hardness 0.125
+source_black_outside true
+name RotoPaint2
+selected true
+xpos 7313
+ypos 3087
 }
 Group {
- name LinToRound
- selected true
- xpos -1486
- ypos 2814
+name LinToRound1
+selected true
+xpos 7313
+ypos 3113
 }
- Input {
-  inputs 0
-  name Input1
-  xpos -656
-  ypos 435
- }
- Invert {
-  name Invert1
-  selected true
-  xpos -656
-  ypos 500
- }
- Gamma {
-  value 0.5
-  name Gamma2
-  xpos -656
-  ypos 538
- }
- Grade {
-  multiply -1
-  add 1
-  black_clamp false
-  name Grade45
-  xpos -656
-  ypos 576
- }
- Gamma {
-  value 2
-  name Gamma3
-  xpos -656
-  ypos 602
- }
- Output {
-  name Output1
-  xpos -656
-  ypos 702
- }
-end_group
-Noise {
- inputs 0
- size {65 115}
- center {1289 1080}
- name Noise10
- selected true
- xpos -1701
- ypos 2798
+Input {
+inputs 0
+name Input1
+xpos -656
+ypos 435
 }
-Merge2 {
- inputs 2
- operation plus
- name Merge26
- selected true
- xpos -1701
- ypos 2842
+Invert {
+name Invert1
+selected true
+xpos -656
+ypos 500
+}
+Gamma {
+value 0.5
+name Gamma2
+xpos -656
+ypos 538
 }
 Grade {
- whitepoint 2
- multiply 0.006
- black_clamp false
- name Grade42
- selected true
- xpos -1701
- ypos 2886
+multiply -1
+add 1
+black_clamp false
+name Grade45
+xpos -656
+ypos 576
+}
+Gamma {
+value 2
+name Gamma3
+xpos -656
+ypos 602
+}
+Output {
+name Output1
+xpos -656
+ypos 702
+}
+end_group
+Noise {
+inputs 0
+size {65 115}
+center {1289 1080}
+name Noise26
+selected true
+xpos 7098
+ypos 3097
+}
+Merge2 {
+inputs 2
+operation plus
+name Merge58
+selected true
+xpos 7098
+ypos 3141
+}
+Grade {
+whitepoint 2
+multiply 0.006
+black_clamp false
+name Grade89
+selected true
+xpos 7098
+ypos 3185
 }
 Constant {
- inputs 0
- color 1
- name Constant4
- selected true
- xpos -1944
- ypos 2752
+inputs 0
+color 1
+name Constant8
+selected true
+xpos 6855
+ypos 3051
 }
 add_layer {bump bump.red bump.green bump.blue bump.alpha}
 ShuffleCopy {
- inputs 2
- alpha alpha2
- black red
- white green
- red2 blue
- green2 alpha
- out2 bump
- name ShuffleCopy6
- selected true
- xpos -1944
- ypos 2932
+inputs 2
+alpha alpha2
+black red
+white green
+red2 blue
+green2 alpha
+out2 bump
+name ShuffleCopy10
+selected true
+xpos 6855
+ypos 3231
 }
 Card2 {
- translate {0 0 -3}
- control_points {3 3 3 6 
+translate {0 0 -3}
+control_points {3 3 3 6 
 
 1 {-0.5 -0.5 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {0 0 0} 
 1 {0 -0.5 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {0.5 0 0} 
@@ -443,167 +443,194 @@ Card2 {
 1 {-0.5 0.5 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {0 1 0} 
 1 {0 0.5 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {0.5 1 0} 
 1 {0.5 0.5 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {1 1 0} }
- name Card1
- selected true
- xpos -1944
- ypos 3019
+name Card2
+selected true
+xpos 6855
+ypos 3318
 }
 push 0
 add_layer {P P.red P.green P.blue P.alpha}
 add_layer {N N.red N.green N.blue N.alpha}
 ScanlineRender {
- inputs 3
- conservative_shader_sampling false
- motion_vectors_type distance
- output_shader_vectors true
- P_channel P
- N_channel N
- name ScanlineRender1
- selected true
- xpos -1944
- ypos 3089
-}
-set N580bac00 [stack 0]
-Shuffle {
- in P
- name Shuffle11
- label "\[value in]"
- selected true
- xpos -1784
- ypos 3182
-}
-set N580ba800 [stack 0]
-Expression {
- temp_name0 l
- temp_expr0 hypot(r,hypot(g,b))
- expr0 r/l
- expr1 g/l
- expr2 b/l
- name Normalize2
- selected true
- xpos -1635
- ypos 3188
-}
-Multiply {
- value -1
- name Multiply1
- selected true
- xpos -1635
- ypos 3214
-}
-push $N580bac00
-Shuffle {
- in bump
- name Shuffle17
- label "\[value in]"
- selected true
- xpos -1574
- ypos 3083
-}
-MergeExpression {
- inputs 2
- expr0 Ar*Br
- expr1 Ag*Bg
- expr2 Ab*Bb
- name MergeExpression2
- selected true
- xpos -1574
- ypos 3259
+inputs 3
+conservative_shader_sampling false
+motion_vectors_type distance
+output_shader_vectors true
+P_channel P
+N_channel N
+name ScanlineRender4
+selected true
+xpos 6855
+ypos 3388
 }
 Dot {
- name Dot27
- selected true
- xpos -1540
- ypos 3319
+name Dot59
+selected true
+xpos 6889
+ypos 3445
 }
-push $N580ba800
+Dot {
+name Dot63
+selected true
+xpos 6889
+ypos 3488
+}
+set N41ee000 [stack 0]
+Shuffle {
+in N
+name Shuffle35
+label "\[value in]"
+selected true
+xpos 7129
+ypos 3522
+}
+Expression {
+temp_name0 l
+temp_expr0 hypot(r,hypot(g,b))
+expr0 r/l
+expr1 g/l
+expr2 b/l
+name Normalize11
+selected true
+xpos 7129
+ypos 3560
+}
+push $N41ee000
+Shuffle {
+in bump
+name Shuffle39
+label "\[value in]"
+selected true
+xpos 7225
+ypos 3478
+}
+MergeExpression {
+inputs 2
+expr0 Ar*Br
+expr1 Ag*Bg
+expr2 Ab*Bb
+name MergeExpression7
+selected true
+xpos 7225
+ypos 3600
+}
+Dot {
+name Dot64
+selected true
+xpos 7259
+ypos 3661
+}
+push $N41ee000
+Shuffle {
+in P
+name Shuffle40
+label "\[value in]"
+selected true
+xpos 7015
+ypos 3570
+}
 Merge2 {
- inputs 2
- operation plus
- name Merge13
- selected true
- xpos -1784
- ypos 3315
+inputs 2
+operation plus
+name Merge72
+selected true
+xpos 7015
+ypos 3657
 }
+set Nfc62e400 [stack 0]
 Dot {
- name Dot25
- selected true
- xpos -1750
- ypos 3383
+name Dot65
+selected true
+xpos 7049
+ypos 3725
 }
-set N5811c400 [stack 0]
+set N5a9c4000 [stack 0]
 Matrix {
- matrix {{0 -1 1}
-   }
- name Matrix4
- selected true
- xpos -1684
- ypos 3451
+matrix {
+    {1}
+    {-1}
+    {0}
+  }
+name Matrix13
+selected true
+xpos 7015
+ypos 3792
 }
 Expression {
- temp_name0 l
- temp_expr0 hypot(r,hypot(g,b))
- expr0 r/l
- expr1 g/l
- expr2 b/l
- name Normalize1
- selected true
- xpos -1684
- ypos 3489
+temp_name0 l
+temp_expr0 hypot(r,hypot(g,b))
+expr0 r/l
+expr1 g/l
+expr2 b/l
+name Normalize12
+selected true
+xpos 7015
+ypos 3830
 }
-push $N5811c400
+push $N5a9c4000
 Matrix {
- matrix {
-     {1}
-     {-1}
-     {0}
-   }
- name Matrix3
- selected true
- xpos -1784
- ypos 3450
+matrix {{0 -1 1}
+  }
+name Matrix14
+selected true
+xpos 7115
+ypos 3793
 }
 Expression {
- temp_name0 l
- temp_expr0 hypot(r,hypot(g,b))
- expr0 r/l
- expr1 g/l
- expr2 b/l
- name Normalize
- selected true
- xpos -1784
- ypos 3488
+temp_name0 l
+temp_expr0 hypot(r,hypot(g,b))
+expr0 r/l
+expr1 g/l
+expr2 b/l
+name Normalize13
+selected true
+xpos 7115
+ypos 3831
 }
 MergeExpression {
- inputs 2
- expr0 Ag*Bb-Ab*Bg
- expr1 Ab*Br-Ar*Bb
- expr2 Ar*Bg-Ag*Br
- name CrossProduct1
- selected true
- xpos -1739
- ypos 3543
+inputs 2
+expr0 Ag*Bb-Ab*Bg
+expr1 Ab*Br-Ar*Bb
+expr2 Ar*Bg-Ag*Br
+name CrossProduct5
+selected true
+xpos 7066
+ypos 3885
 }
-push $N580bac00
+push $Nfc62e400
+push $N41ee000
 ShuffleCopy {
- inputs 2
- alpha alpha2
- black red
- white green
- red2 blue
- green2 alpha
- out2 N
- name ShuffleCopy4
- selected true
- xpos -1944
- ypos 3543
+inputs 2
+alpha alpha2
+black red
+white green
+red2 blue
+green2 alpha
+out2 P
+name ShuffleCopy15
+selected true
+xpos 6855
+ypos 3657
+}
+ShuffleCopy {
+inputs 2
+alpha alpha2
+black red
+white green
+red2 blue
+green2 alpha
+out2 N
+name ShuffleCopy17
+selected true
+xpos 6855
+ypos 3885
 }
 ReLight {
- inputs 4
- normal N
- position P
- name ReLight1
- selected true
- xpos -1944
- ypos 3736
+inputs 4
+normal N
+position P
+name ReLight2
+selected true
+xpos 6855
+ypos 4035
 }

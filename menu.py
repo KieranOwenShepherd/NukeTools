@@ -1,5 +1,3 @@
-import fxT_shareNodes
-
 def ttt():
     import tabtabtab
     m_edit = nuke.menu('Nuke').findItem('Edit')

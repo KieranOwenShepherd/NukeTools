@@ -1,0 +1,11 @@
+set cut_paste_input [stack 0]
+version 10.5 v3
+push $cut_paste_input
+Expression {
+expr0 (x+0.5)/width
+expr1 (y+0.5)/height
+name ST_nOOP
+selected true
+xpos -396
+ypos -83
+}

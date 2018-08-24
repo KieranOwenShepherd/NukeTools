@@ -1,0 +1,11 @@
+set cut_paste_input [stack 0]
+version 10.5 v3
+push $cut_paste_input
+NoOp {
+name ScatterPoints
+selected true
+xpos -392
+ypos 4392
+addUserKnob {20 User}
+addUserKnob {22 AddPoints T "import random\nnode = nuke.thisNode()\nfor n in range(int(nuke.getInput('Number of Points',''))):\n    #randomly place in the region of interest\n    roi = nuke.activeViewer().node().roi()\n    k = nuke.XY_Knob('p'+ str(n))\n    k.setValue( \[random.uniform(roi\['x'],roi\['r']), random.uniform(roi\['y'],roi\['t'])] )\n    node.addKnob(k)" +STARTLINE}
+}

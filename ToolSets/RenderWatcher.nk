@@ -1,0 +1,12 @@
+set cut_paste_input [stack 0]
+version 11.1 v1
+push $cut_paste_input
+NoOp {
+name RenderWatcher
+selected true
+xpos -328
+ypos 9193
+addUserKnob {20 User}
+addUserKnob {22 Watch l "<font size=20>Watch" T "import thread\nimport time\nimport os.path\n \ndef checkRender(readNode, renderWatcher):\n  start = time.time()\n  timeout = 900\n  pt = nuke.ProgressTask('%s %s' % ( readNode.name(), readNode\['file'].getValue().split('/')\[-1] ) )\n  framerange = range(int(nuke.Root()\['first_frame'].getValue()),int(nuke.Root()\['last_frame'].getValue()))\n  running = True\n\n  while running:\n    if pt.isCancelled():\n      running = False\n    complete_frames = \[os.path.exists(readNode\['file'].getText() % i) for i in framerange]\n    pt.setProgress( int(float(sum(complete_frames)) / float(len(complete_frames))*100.0)  )\n    if all( complete_frames ):\n      #render is complete\n      pt.setMessage('COMPLETE %s' % time.ctime())\n      running = False\n      #set the node variables signalling complete\n      nuke.executeInMainThread( lambda: renderWatcher\['complete'].setValue(True) )\n      nuke.executeInMainThread( lambda: renderWatcher\['tile_color'].fromScript('0') )\n      #pop up window to signal completeness (later make this optional)\n    if time.time() > (start + timeout):\n      #thread timeout\n      running = False\n      pt.setMessage('TIMEOUT')\n    time.sleep(1)\n  #shut down procedures\n  nuke.executeInMainThread( lambda: nuke.message('RENDER COMPLETE') )\n  nuke.executeInMainThread( lambda: renderWatcher\['tile_color'].fromScript('0') )\n  \n\nnuke.thisNode()\['tile_color'].fromScript('0xffaa33ff')\nnuke.thisNode()\['complete'].setValue(False)\nthread.start_new_thread(  checkRender,(nuke.thisNode().input(0),nuke.thisNode())  )" +STARTLINE}
+addUserKnob {6 complete l complete? +STARTLINE}
+}

@@ -1,0 +1,90 @@
+set cut_paste_input [stack 0]
+version 10.5 v3
+push $cut_paste_input
+add_layer {specular specular.red specular.green specular.blue}
+Group {
+name LightPassGrade3
+label "\[value layer]"
+selected true
+xpos -893
+ypos 473
+addUserKnob {20 User}
+addUserKnob {41 layer T ShuffleOutLayer.in2}
+addUserKnob {41 blackpoint T Grade9.blackpoint}
+addUserKnob {41 whitepoint T Grade9.whitepoint}
+addUserKnob {41 black l lift T Grade9.black}
+addUserKnob {41 white l gain T Grade9.white}
+addUserKnob {41 multiply T Grade9.multiply}
+addUserKnob {41 add l offset T Grade9.add}
+addUserKnob {41 gamma T Grade9.gamma}
+}
+Input {
+inputs 0
+name Input1
+xpos -656
+ypos -52
+}
+Dot {
+name Dot2
+xpos -622
+ypos -12
+}
+set Ncf88a800 [stack 0]
+Shuffle {
+in2 specular
+red red2
+green green2
+blue blue2
+name ShuffleOutLayer
+xpos -781
+ypos 23
+}
+set Ncf88a000 [stack 0]
+Grade {
+multiply 0.5
+unpremult rgba.alpha
+name Grade9
+label operate
+xpos -781
+ypos 69
+}
+set Ncf88b800 [stack 0]
+Dot {
+name Dot3
+xpos -747
+ypos 135
+}
+push $Ncf88b800
+push $Ncf88a000
+push $Ncf88a800
+Merge2 {
+inputs 2
+operation from
+output {rgba.red rgba.green rgba.blue -rgba.alpha}
+name Merge22
+xpos -656
+ypos 23
+}
+Merge2 {
+inputs 2
+operation plus
+output {rgba.red rgba.green rgba.blue -rgba.alpha}
+name Merge23
+xpos -656
+ypos 82
+}
+ShuffleCopy {
+inputs 2
+in none
+alpha alpha2
+out {{{ShuffleOutLayer.in2}}}
+name ShuffleInLayer
+xpos -656
+ypos 148
+}
+Output {
+name Output1
+xpos -656
+ypos 248
+}
+end_group

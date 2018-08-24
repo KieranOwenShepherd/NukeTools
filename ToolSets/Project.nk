@@ -1,0 +1,147 @@
+set cut_paste_input [stack 0]
+version 10.5 v3
+push 0
+push 0
+push $cut_paste_input
+Group {
+ inputs 3
+ name Project
+ label "\[knob mode](\[knob first_frame])"
+ selected true
+ xpos -1172
+ ypos -269
+ addUserKnob {20 User}
+ addUserKnob {4 mode M {Stabilize MatchMove ""}}
+ addUserKnob {6 frameholdsource l "framehold source" -STARTLINE}
+ addUserKnob {3 first_frame l frame}
+ first_frame 1015
+ addUserKnob {22 thisFrame -STARTLINE T "nuke.thisNode()\['first_frame'].setValue(nuke.frame())"}
+ addUserKnob {26 ""}
+ addUserKnob {4 type M {"UVProject (vertex based)" "Project3D (shader based)" "" ""}}
+ type "Project3D (shader based)"
+ addUserKnob {41 format l "out format" T Reformat1.format}
+}
+ Input {
+  inputs 0
+  name cam
+  xpos -697
+  ypos 268
+  number 1
+ }
+ Dot {
+  name Dot7
+  tile_color 0x9c000000
+  xpos -663
+  ypos 456
+ }
+set Na451400 [stack 0]
+ Dot {
+  name Dot3
+  tile_color 0x9c000000
+  xpos -663
+  ypos 525
+ }
+set Na451000 [stack 0]
+ Dot {
+  name Dot4
+  tile_color 0x9c000000
+  xpos -663
+  ypos 620
+ }
+ FrameHold {
+  first_frame {{parent.knob.first_frame}}
+  name FrameHold1
+  xpos -581
+  ypos 610
+  disable {{parent.mode}}
+ }
+push $Na451000
+ FrameHold {
+  first_frame {{parent.knob.first_frame}}
+  name FrameHold2
+  xpos -584
+  ypos 515
+  disable {{!parent.mode}}
+ }
+push $Na451400
+ FrameHold {
+  first_frame {{parent.knob.first_frame}}
+  name FrameHold4
+  xpos -582
+  ypos 446
+  disable {{!parent.mode}}
+ }
+ Input {
+  inputs 0
+  name Input1
+  xpos -423
+  ypos 265
+ }
+ FrameHold {
+  first_frame {{parent.knob.first_frame}}
+  name FrameHold3
+  xpos -423
+  ypos 301
+  disable {{!parent.frameholdsource}}
+ }
+ Dot {
+  name Dot5
+  xpos -389
+  ypos 416
+ }
+ Project3D2 {
+  inputs 2
+  crop false
+  name Project3D1
+  xpos -423
+  ypos 452
+  disable {{!parent.type}}
+ }
+ Input {
+  inputs 0
+  name geo
+  xpos -241
+  ypos 416
+  number 2
+ }
+ Dot {
+  name Dot6
+  tile_color 0x9c000000
+  label geometry
+  xpos -207
+  ypos 491
+ }
+ ApplyMaterial {
+  inputs 2
+  name ApplyMaterial1
+  xpos -423
+  ypos 487
+ }
+ UVProject {
+  inputs 2
+  name UVProject1
+  xpos -423
+  ypos 521
+  disable {{parent.type}}
+ }
+ Reformat {
+  inputs 0
+  name Reformat1
+  xpos -484
+  ypos 578
+ }
+ ScanlineRender {
+  inputs 3
+  conservative_shader_sampling false
+  shutteroffset centred
+  motion_vectors_type distance
+  name ScanlineRender1
+  xpos -423
+  ypos 616
+ }
+ Output {
+  name Output1
+  xpos -423
+  ypos 716
+ }
+end_group

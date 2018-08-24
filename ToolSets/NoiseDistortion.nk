@@ -1,0 +1,87 @@
+set cut_paste_input [stack 0]
+version 10.5 v3
+Noise {
+inputs 0
+size 94
+center {1289 1080}
+name Noise17
+selected true
+xpos -1856
+ypos -47
+}
+push $cut_paste_input
+Group {
+inputs 2
+name NoiseDistortion4
+selected true
+xpos -1856
+ypos 33
+addUserKnob {20 User}
+addUserKnob {41 uv_scale T IDistort1.uv_scale}
+addUserKnob {41 blur_scale T IDistort1.blur_scale}
+}
+Input {
+inputs 0
+name distortion
+xpos -970
+ypos 443
+number 1
+}
+Shuffle {
+name Shuffle1
+xpos -970
+ypos 469
+}
+Matrix {
+channels {rgba.red -rgba.green -rgba.blue none}
+matrix {{-1 0 1}
+  }
+name Matrix3
+xpos -970
+ypos 495
+}
+Matrix {
+channels {-rgba.red rgba.green -rgba.blue none}
+matrix {
+    {1}
+    {0}
+    {-1}
+  }
+name Matrix4
+xpos -970
+ypos 521
+}
+Input {
+inputs 0
+name Input1
+xpos -656
+ypos 464
+}
+add_layer {distortion distortion.red distortion.green distortion.blue distortion.alpha}
+ShuffleCopy {
+inputs 2
+alpha alpha2
+black red
+white green
+red2 blue
+green2 alpha
+out2 distortion
+name ShuffleCopy1
+xpos -656
+ypos 561
+}
+IDistort {
+uv distortion
+uv_scale 1300
+blur distortion.blue
+blur_scale 40
+name IDistort1
+xpos -656
+ypos 632
+}
+Output {
+name Output1
+xpos -656
+ypos 740
+}
+end_group

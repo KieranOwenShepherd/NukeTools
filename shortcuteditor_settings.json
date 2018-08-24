@@ -1,0 +1,10 @@
+{
+ "overrides": {
+  "Nodes/Color/ColorCorrect": "",
+  "Nuke/Edit/Tabtabtab": "Tab",
+  "Nuke/QuickScripts/NODE_quick_presets": "C",
+  "Nuke/QuickScripts/NODE_set_label": "E",
+  "Nuke/QuickScripts/VIEWER_reset": "Shift+E"
+ },
+ "version": 1
+}

@@ -1,0 +1,53 @@
+set cut_paste_input [stack 0]
+version 11.1 v2
+push $cut_paste_input
+add_layer {screen_coords screen_coords.red screen_coords.green screen_coords.blue screen_coords.alpha}
+Expression {
+channel0 {screen_coords.red -screen_coords.green -screen_coords.blue none}
+expr0 x
+channel1 {-screen_coords.red screen_coords.green -screen_coords.blue none}
+expr1 y
+channel2 {-screen_coords.red -screen_coords.green screen_coords.blue none}
+expr2 0
+channel3 {none none none screen_coords.alpha}
+expr3 1
+name ScreenCoords
+selected true
+xpos -120
+ypos 128
+}
+Group {
+name ReverseTrack
+selected true
+xpos -120
+ypos 234
+addUserKnob {20 User}
+addUserKnob {41 go l Go! T CurveTool1.go}
+addUserKnob {41 ROI T CurveTool1.ROI}
+addUserKnob {41 resetROI l reset -STARTLINE T CurveTool1.resetROI}
+addUserKnob {26 "" +STARTLINE}
+addUserKnob {41 intensitydata T CurveTool1.intensitydata}
+}
+Input {
+inputs 0
+name Input1
+xpos -83
+ypos 174
+}
+CurveTool {
+avgframes 1
+channels screen_coords
+ROI {1024 540 3072 1620}
+autocropdata {1024 540 3072 1620}
+intensitydata {0 0 0 0}
+name CurveTool1
+selected true
+xpos -83
+ypos 238
+}
+Output {
+name Output1
+xpos -83
+ypos 314
+}
+end_group

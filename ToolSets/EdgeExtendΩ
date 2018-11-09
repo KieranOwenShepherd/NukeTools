@@ -1,0 +1,1062 @@
+set cut_paste_input [stack 0]
+
+version 10.5 v3
+
+push $cut_paste_input
+
+Group {
+
+name EdgeExtendΩ
+
+selected true
+
+xpos -846
+
+ypos -333
+
+addUserKnob {20 User}
+
+addUserKnob {26 SHAPING l "" +STARTLINE T "S H A P I N G"}
+
+addUserKnob {7 shape R 0 20}
+
+shape 2.5
+
+addUserKnob {26 ""}
+
+addUserKnob {26 IMPLEMENTATION l "" +STARTLINE T "I M P L E M E N T A T I O N"}
+
+addUserKnob {7 maxblur R 0 20}
+
+maxblur 12.3
+
+addUserKnob {3 iterations}
+
+iterations 25
+
+addUserKnob {26 ""}
+
+addUserKnob {26 gradientfollowing_1 l "" +STARTLINE T "G R A D I E N T   F O L L O W I N G"}
+
+addUserKnob {6 gradientfollowing l enable t "analyzes the source to try and guess what kind of gradient is present. Sometimes this leads to a more natural result, but also can make the result less stable if the source regions dramatically change. Use with caution" +STARTLINE}
+
+addUserKnob {7 gradientshape l "follow shape" R 0 8}
+
+gradientshape 3.3
+
+addUserKnob {7 redcolshift l "supress color"}
+
+redcolshift 0.775
+
+addUserKnob {26 ""}
+
+addUserKnob {26 MASKSETTINGS l "" +STARTLINE T "M A S K   S E T T I N G S"}
+
+addUserKnob {7 maskblackpoint l "mask sourcepoint" R 0.9 0.999}
+
+maskblackpoint 0.9
+
+addUserKnob {6 invertmask l "invert mask" +STARTLINE}
+
+invertmask true
+
+}
+
+Input {
+
+inputs 0
+
+name mask
+
+xpos -41
+
+ypos -424
+
+number 1
+
+}
+
+Dot {
+
+name Dot11
+
+xpos -7
+
+ypos -299
+
+}
+
+set Nda730c00 [stack 0]
+
+Invert {
+
+name Invert2
+
+xpos 152
+
+ypos -309
+
+disable {{!parent.invertmask x1023 0}}
+
+}
+
+Grade {
+
+channels alpha
+
+blackpoint {{parent.maskblackpoint}}
+
+white_clamp true
+
+name Grade1
+
+xpos 152
+
+ypos -271
+
+}
+
+set Nda730400 [stack 0]
+
+Blur {
+
+size 2
+
+name Blur1
+
+xpos 41
+
+ypos 44
+
+}
+
+set Nda730000 [stack 0]
+
+Dilate {
+
+size -1
+
+name Dilate3
+
+xpos 489
+
+ypos 44
+
+}
+
+push $Nda730400
+
+Dilate {
+
+size -1
+
+name Dilate2
+
+xpos 375
+
+ypos 10
+
+}
+
+Merge2 {
+
+inputs 2
+
+operation stencil
+
+metainput All
+
+name Merge3
+
+xpos 375
+
+ypos 89
+
+}
+
+Input {
+
+inputs 0
+
+name Input1
+
+xpos 629
+
+ypos -165
+
+}
+
+set Ne2c1f000 [stack 0]
+
+Shuffle {
+
+alpha white
+
+name Shuffle4
+
+label "\[value in]"
+
+xpos 629
+
+ypos -74
+
+}
+
+Dot {
+
+name Dot7
+
+xpos 663
+
+ypos 100
+
+}
+
+set Ne2c1e800 [stack 0]
+
+Multiply {
+
+inputs 1+1
+
+value 0
+
+invert_mask true
+
+name Multiply2
+
+label mask
+
+xpos 375
+
+ypos 128
+
+}
+
+Matrix {
+
+matrix {
+
+    {1 1 1}
+
+    {1 1 1}
+
+    {1 1 1}
+
+  }
+
+normalize true
+
+name Matrix2
+
+xpos 375
+
+ypos 180
+
+}
+
+Unpremult {
+
+name Unpremult2
+
+xpos 375
+
+ypos 218
+
+}
+
+set Nc082bc00 [stack 0]
+
+push $Nda730000
+
+push $Nda730400
+
+Merge2 {
+
+inputs 2
+
+operation stencil
+
+metainput All
+
+name Merge1
+
+xpos 152
+
+ypos 88
+
+}
+
+set Nc082b800 [stack 0]
+
+push $Ne2c1e800
+
+Multiply {
+
+inputs 1+1
+
+value 0
+
+invert_mask true
+
+name Multiply3
+
+label mask
+
+xpos 253
+
+ypos 130
+
+}
+
+Matrix {
+
+matrix {
+
+    {1 1 1}
+
+    {1 1 1}
+
+    {1 1 1}
+
+  }
+
+normalize true
+
+name Matrix1
+
+xpos 253
+
+ypos 182
+
+}
+
+Unpremult {
+
+name Unpremult1
+
+xpos 253
+
+ypos 220
+
+}
+
+set Nc082ac00 [stack 0]
+
+Merge2 {
+
+inputs 2
+
+operation from
+
+metainput All
+
+name Merge4
+
+xpos 310
+
+ypos 259
+
+}
+
+set Nc082a800 [stack 0]
+
+Dot {
+
+name Dot4
+
+label "an estimate of\nprogression"
+
+xpos 344
+
+ypos 295
+
+}
+
+push $Nda730000
+
+Invert {
+
+name Invert1
+
+xpos 41
+
+ypos 1329
+
+}
+
+Blur {
+
+size 1
+
+name Blur2
+
+xpos 41
+
+ypos 1367
+
+}
+
+push $Nda730c00
+
+Dot {
+
+name Dot12
+
+xpos -7
+
+ypos 353
+
+}
+
+add_layer {holdout_source holdout_source.red holdout_source.green holdout_source.blue holdout_source.alpha}
+
+Shuffle {
+
+in holdout_source
+
+name Shuffle2
+
+label holdout
+
+xpos 428
+
+ypos 351
+
+}
+
+push $Nc082b800
+
+Dot {
+
+name Dot8
+
+xpos 186
+
+ypos 441
+
+}
+
+Dot {
+
+name Dot10
+
+xpos 390
+
+ypos 441
+
+}
+
+Merge2 {
+
+inputs 2
+
+operation stencil
+
+name Merge8
+
+xpos 428
+
+ypos 437
+
+}
+
+push $Ne2c1f000
+
+Dot {
+
+name Dot2
+
+xpos 773
+
+ypos 217
+
+}
+
+set Nc3ea0400 [stack 0]
+
+Expression {
+
+expr0 (x+0.5)
+
+expr1 (y+0.5)
+
+expr2 0
+
+name Position
+
+xpos 898
+
+ypos 297
+
+}
+
+set Nc3ea0000 [stack 0]
+
+push $Nc082ac00
+
+push $Nc082bc00
+
+MergeExpression {
+
+inputs 2
+
+expr3 Aa>0&&Ba>0
+
+name MergeExpression2
+
+xpos 457
+
+ypos 227
+
+}
+
+push $Nc082a800
+
+Multiply {
+
+inputs 1+1
+
+value 0
+
+invert_mask true
+
+name Multiply4
+
+xpos 457
+
+ypos 253
+
+}
+
+push $Ne2c1e800
+
+add_layer {slope slope.red slope.green slope.blue slope.alpha}
+
+ShuffleCopy {
+
+inputs 2
+
+alpha alpha2
+
+black red
+
+white green
+
+red2 blue
+
+green2 alpha
+
+out2 slope
+
+name ShuffleCopy1
+
+label slope
+
+xpos 629
+
+ypos 253
+
+}
+
+add_layer {position2d position2d.red position2d.green position2d.blue position2d.alpha}
+
+ShuffleCopy {
+
+inputs 2
+
+alpha alpha2
+
+black red
+
+white green
+
+red2 blue
+
+green2 alpha
+
+out2 position2d
+
+name ShuffleCopy2
+
+label position2d
+
+xpos 629
+
+ypos 291
+
+}
+
+Multiply {
+
+inputs 1+1
+
+value 0
+
+invert_mask true
+
+name Multiply1
+
+label mask
+
+xpos 629
+
+ypos 424
+
+}
+
+NoTimeBlur {
+
+name NoTimeBlur1
+
+xpos 629
+
+ypos 541
+
+}
+
+Dot {
+
+name Dot46
+
+selected true
+
+xpos 663
+
+ypos 567
+
+}
+
+Blur {
+
+size {{2**(parent.maxblur*(frame%1))}}
+
+name Blur20
+
+xpos 629
+
+ypos 619
+
+}
+
+set Nda525400 [stack 0]
+
+Grade {
+
+channels all
+
+multiply {{parent.Blur20.size**-parent.shape}}
+
+black_clamp false
+
+name Grade35
+
+label shaping
+
+xpos 629
+
+ypos 696
+
+}
+
+set Nda524c00 [stack 0]
+
+TimeBlur {
+
+divisions {{parent.iterations}}
+
+shutter 0.98
+
+shutteroffset start
+
+shuttercustomoffset 0
+
+name TimeBlur1
+
+xpos 629
+
+ypos 771
+
+}
+
+NoTimeBlur {
+
+name NoTimeBlur2
+
+xpos 629
+
+ypos 797
+
+}
+
+Unpremult {
+
+name Unpremult5
+
+xpos 629
+
+ypos 830
+
+}
+
+Unpremult {
+
+channels slope
+
+name Unpremult3
+
+xpos 629
+
+ypos 895
+
+}
+
+Unpremult {
+
+channels position2d
+
+name Unpremult4
+
+xpos 629
+
+ypos 933
+
+}
+
+set Nd96e9800 [stack 0]
+
+Dot {
+
+name Dot9
+
+xpos 741
+
+ypos 1030
+
+}
+
+set Nd96e9400 [stack 0]
+
+Shuffle {
+
+in slope
+
+name Shuffle1
+
+label "\[value in]"
+
+xpos 796
+
+ypos 1231
+
+}
+
+push $Nc3ea0000
+
+Dot {
+
+name Dot5
+
+xpos 932
+
+ypos 844
+
+}
+
+push $Nd96e9400
+
+Shuffle {
+
+in position2d
+
+name Shuffle3
+
+label "\[value in]"
+
+xpos 802
+
+ypos 1153
+
+}
+
+Merge2 {
+
+inputs 2
+
+operation from
+
+metainput All
+
+name Merge5
+
+xpos 898
+
+ypos 1159
+
+}
+
+Expression {
+
+expr0 hypot(r,g)
+
+name Expression1
+
+label distance
+
+xpos 898
+
+ypos 1185
+
+}
+
+Grade {
+
+gamma {{parent.gradientshape}}
+
+black_clamp false
+
+name Grade2
+
+xpos 898
+
+ypos 1223
+
+}
+
+Shuffle {
+
+green red
+
+blue red
+
+alpha red
+
+name Shuffle5
+
+label "\[value in]"
+
+xpos 898
+
+ypos 1249
+
+}
+
+MergeExpression {
+
+inputs 2
+
+expr0 Ar*Br
+
+expr1 Ag*Bg
+
+expr2 Ab*Bb
+
+name MergeExpression1
+
+xpos 898
+
+ypos 1287
+
+}
+
+push $Nd96e9800
+
+Expression {
+
+expr3 a>0
+
+name Unpremalt4
+
+xpos 629
+
+ypos 995
+
+}
+
+Dot {
+
+name Dot6
+
+xpos 663
+
+ypos 1164
+
+}
+
+set Nd8ae6000 [stack 0]
+
+Merge2 {
+
+inputs 2
+
+operation plus
+
+metainput All
+
+name Merge7
+
+xpos 629
+
+ypos 1287
+
+disable {{!parent.gradientfollowing}}
+
+}
+
+set Nd589fc00 [stack 0]
+
+Saturation {
+
+saturation 0
+
+mode Average
+
+name Saturation1
+
+xpos 506
+
+ypos 1287
+
+}
+
+push $Nd8ae6000
+
+Saturation {
+
+saturation 0
+
+mode Average
+
+name Saturation2
+
+xpos 437
+
+ypos 1308
+
+}
+
+Merge2 {
+
+inputs 2
+
+operation divide
+
+metainput All
+
+name Merge6
+
+xpos 469
+
+ypos 1348
+
+}
+
+push $Nd8ae6000
+
+Dot {
+
+name Dot3
+
+xpos 591
+
+ypos 1240
+
+}
+
+Merge2 {
+
+inputs 2
+
+operation multiply
+
+metainput All
+
+name Merge2
+
+xpos 557
+
+ypos 1374
+
+}
+
+push $Nd589fc00
+
+Dissolve {
+
+inputs 2
+
+which {{parent.redcolshift}}
+
+name Dissolve1
+
+xpos 629
+
+ypos 1406
+
+disable {{!parent.gradientfollowing}}
+
+}
+
+push $Nc3ea0400
+
+Dot {
+
+name Dot1
+
+xpos 773
+
+ypos 1388
+
+}
+
+Keymix {
+
+inputs 3
+
+name Keymix1
+
+xpos 629
+
+ypos 1469
+
+}
+
+Output {
+
+name Output1
+
+xpos 629
+
+ypos 1514
+
+}
+
+push $Nda525400
+
+Dot {
+
+name Dot13
+
+label "the expression\nin the size\nrelates to the\namount of\ndetail. smaller\nsizes need more\nincrements to\nblend nicely"
+
+xpos 821
+
+ypos 629
+
+}
+
+push $Nda524c00
+
+Dot {
+
+name Dot14
+
+label "by reducing the\ninfluence of\nlarger blurs,\nthe overall\naverage is\ndominated by the\nsmaller ones,\nunless they are\nnot present"
+
+xpos 965
+
+ypos 713
+
+}
+
+end_group
+
